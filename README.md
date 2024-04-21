@@ -50,7 +50,7 @@ Github Actions:
     wasm: true
     plugin: biome
     args: |
-      setup 1.7.0
+      setup
     working-directory: example
 - name: Show Biome version
   run: |

@@ -30,3 +30,59 @@ pub fn setup(version: String) -> FnResult<String> {
 
     Ok(stdout)
 }
+
+#[plugin_fn]
+pub fn format(args: String) -> FnResult<String> {
+    dag().call(
+        "https://pkg.fluentci.io/bun@v0.7.1?wasm=1",
+        "setup",
+        vec!["latest"],
+    )?;
+    let stdout = dag()
+        .pkgx()?
+        .with_exec(vec!["bunx", "@biomejs/biome", "format", &args])?
+        .stdout()?;
+    Ok(stdout)
+}
+
+#[plugin_fn]
+pub fn lint(args: String) -> FnResult<String> {
+    dag().call(
+        "https://pkg.fluentci.io/bun@v0.7.1?wasm=1",
+        "setup",
+        vec!["latest"],
+    )?;
+    let stdout = dag()
+        .pkgx()?
+        .with_exec(vec!["bunx", "@biomejs/biome", "lint", &args])?
+        .stdout()?;
+    Ok(stdout)
+}
+
+#[plugin_fn]
+pub fn ci(args: String) -> FnResult<String> {
+    dag().call(
+        "https://pkg.fluentci.io/bun@v0.7.1?wasm=1",
+        "setup",
+        vec!["latest"],
+    )?;
+    let stdout = dag()
+        .pkgx()?
+        .with_exec(vec!["bunx", "@biomejs/biome", "ci", &args])?
+        .stdout()?;
+    Ok(stdout)
+}
+
+#[plugin_fn]
+pub fn check(args: String) -> FnResult<String> {
+    dag().call(
+        "https://pkg.fluentci.io/bun@v0.7.1?wasm=1",
+        "setup",
+        vec!["latest"],
+    )?;
+    let stdout = dag()
+        .pkgx()?
+        .with_exec(vec!["bunx", "@biomejs/biome", "check", &args])?
+        .stdout()?;
+    Ok(stdout)
+}
