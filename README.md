@@ -56,6 +56,7 @@ Github Actions:
     working-directory: example
 - name: Show Biome version
   run: |
+    export PATH=${HOME}/.bun/bin:${PATH}
     type biome
     biome --version
 ```
