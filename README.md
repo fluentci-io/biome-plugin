@@ -53,7 +53,6 @@ Github Actions:
     plugin: biome
     args: |
       setup
-    working-directory: example
 - name: Show Biome version
   run: |
     export PATH=${HOME}/.bun/bin:${PATH}
