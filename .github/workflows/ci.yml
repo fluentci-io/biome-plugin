@@ -22,6 +22,8 @@ jobs:
           args: |
             setup 1.7.0
           working-directory: example
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Show Biome version
         run: |
           export PATH=${HOME}/.bun/bin:${PATH}
